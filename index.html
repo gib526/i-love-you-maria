@@ -31,7 +31,7 @@
     to   { filter: brightness(1.15) saturate(1.25); }
   }
 
-  /* Corações subindo ao fundo */
+  /* Coracoes subindo ao fundo */
   .heart {
     position: absolute;
     bottom: -60px;
@@ -52,7 +52,7 @@
     100% { transform: translateY(-110vh) scale(1.15) rotate(18deg); opacity: 0; }
   }
 
-  /* Faixas de texto "I love you Maria" passando */
+  /* Faixas de texto passando */
   #ticker {
     position: fixed;
     inset: 0;
@@ -146,114 +146,6 @@
     color: rgba(255, 200, 220, 0.75);
   }
 
-  /* ---------- Player ---------- */
-  #player {
-    position: fixed;
-    z-index: 3;
-    left: 50%;
-    transform: translateX(-50%);
-    bottom: 26px;
-    width: min(560px, calc(100% - 32px));
-    padding: 14px 18px;
-    border-radius: 18px;
-    background: rgba(24, 4, 20, 0.62);
-    border: 1px solid rgba(255, 110, 165, 0.28);
-    backdrop-filter: blur(14px);
-    -webkit-backdrop-filter: blur(14px);
-    box-shadow: 0 18px 50px rgba(0, 0, 0, 0.55), inset 0 0 30px rgba(255, 60, 130, 0.07);
-    color: #ffe6f0;
-  }
-
-  .row { display: flex; align-items: center; gap: 12px; }
-
-  .songName { font-size: 0.9rem; font-weight: 700; }
-  .songName small {
-    display: block;
-    font-weight: 400;
-    font-size: 0.72rem;
-    letter-spacing: 0.16em;
-    text-transform: uppercase;
-    color: rgba(255, 190, 215, 0.7);
-    margin-top: 2px;
-  }
-
-  button.play {
-    flex: none;
-    width: 46px; height: 46px;
-    border-radius: 50%;
-    border: none;
-    cursor: pointer;
-    font-size: 17px;
-    color: #2a0016;
-    background: linear-gradient(145deg, #ffc2d9, #ff5f96);
-    box-shadow: 0 8px 22px rgba(255, 60, 130, 0.45);
-    transition: transform 0.15s ease, box-shadow 0.15s ease;
-  }
-  button.play:hover { transform: scale(1.07); box-shadow: 0 10px 28px rgba(255, 60, 130, 0.6); }
-  button.play:active { transform: scale(0.96); }
-
-  .bar {
-    flex: 1;
-    height: 6px;
-    border-radius: 99px;
-    background: rgba(255, 255, 255, 0.16);
-    overflow: hidden;
-    cursor: pointer;
-  }
-  .bar > i {
-    display: block;
-    height: 100%;
-    width: 0%;
-    border-radius: 99px;
-    background: linear-gradient(90deg, #ff9ec4, #ff3d7f);
-  }
-
-  .time {
-    font-variant-numeric: tabular-nums;
-    font-size: 0.72rem;
-    color: rgba(255, 205, 225, 0.8);
-    min-width: 84px;
-    text-align: right;
-  }
-
-  .hint {
-    margin-top: 8px;
-    font-size: 0.7rem;
-    color: rgba(255, 190, 215, 0.6);
-  }
-
-  /* Aviso clicável quando o navegador bloqueia autoplay */
-  #unmute {
-    position: fixed;
-    z-index: 5;
-    inset: 0;
-    display: none;
-    align-items: center;
-    justify-content: center;
-    background: rgba(10, 0, 8, 0.55);
-    backdrop-filter: blur(4px);
-    cursor: pointer;
-    color: #fff;
-    font-size: clamp(1rem, 3vw, 1.3rem);
-    font-weight: 700;
-    letter-spacing: 0.04em;
-    text-align: center;
-    padding: 24px;
-    text-shadow: 0 0 24px rgba(255, 80, 150, 0.9);
-  }
-  #unmute.show { display: flex; }
-
-  .credits {
-    position: fixed;
-    right: 14px;
-    top: 12px;
-    z-index: 3;
-    font-size: 0.68rem;
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
-    color: rgba(255, 200, 220, 0.45);
-  }
-
   @media (prefers-reduced-motion: reduce) {
     .lane, .heart, #title, #bg { animation: none !important; }
   }
@@ -268,31 +160,6 @@
     <h1 id="title">I love you Maria <span class="heartMark">❤️</span></h1>
     <p id="subtitle">para sempre, Maria</p>
   </div>
-
-  <div class="credits">trilha: Samurai — Djavan</div>
-
-  <div id="player">
-    <div class="row">
-      <button class="play" id="playBtn" aria-label="Tocar ou pausar">▶</button>
-      <div class="songName">
-        Samurai
-        <small>Djavan</small>
-      </div>
-      <div class="time" id="time">0:00 / 0:00</div>
-    </div>
-    <div class="row" style="margin-top:10px">
-      <div class="bar" id="bar"><i id="fill"></i></div>
-      <button class="play" id="muteBtn" style="width:34px;height:34px;font-size:14px" aria-label="Volume">🔊</button>
-    </div>
-    <div class="hint" id="hint">coloque o arquivo <b>samurai.mp3</b> na mesma pasta deste site</div>
-  </div>
-
-  <div id="unmute">toque na tela para iniciar a música 🎵</div>
-
-  <!-- Música de fundo -->
-  <audio id="song" loop preload="auto">
-    <source src="samurai.mp3" type="audio/mpeg">
-  </audio>
 
 <script>
   /* ================== Fundo com "I love you Maria" ================== */
@@ -317,13 +184,13 @@
     el.style.animationDelay = (-i * 3.1) + "s";
     el.style.opacity = lane.hi ? "1" : "0.85";
 
-    // duplicado para o loop ficar contínuo (translateX -50%)
+    // duplicado para o loop ficar continuo
     const unit = PHRASE.repeat(14);
     el.innerHTML = "<span>" + unit + "</span><span>" + unit + "</span>";
     ticker.appendChild(el);
   });
 
-  /* ================== Corações subindo ================== */
+  /* ================== Coracoes subindo ================== */
   const HEARTS = ["❤️", "💗", "💕", "🤍", "💖"];
   const bg = document.getElementById("bg");
   for (let i = 0; i < 26; i++) {
@@ -336,89 +203,6 @@
     h.style.animationDelay = (-Math.random() * 22) + "s";
     bg.appendChild(h);
   }
-
-  /* ================== Player ================== */
-  const audio  = document.getElementById("song");
-  const playBtn = document.getElementById("playBtn");
-  const muteBtn = document.getElementById("muteBtn");
-  const bar    = document.getElementById("bar");
-  const fill   = document.getElementById("fill");
-  const timeEl = document.getElementById("time");
-  const hint   = document.getElementById("hint");
-  const unmute = document.getElementById("unmute");
-
-  const fmt = (s) => {
-    if (!isFinite(s)) return "0:00";
-    const m = Math.floor(s / 60);
-    const r = Math.floor(s % 60);
-    return m + ":" + String(r).padStart(2, "0");
-  };
-
-  function setPlayIcon(playing) {
-    playBtn.textContent = playing ? "❚❚" : "▶";
-  }
-
-  playBtn.addEventListener("click", () => {
-    if (audio.paused) {
-      audio.play().then(() => setPlayIcon(true)).catch(showUnmute);
-    } else {
-      audio.pause();
-      setPlayIcon(false);
-    }
-  });
-
-  audio.addEventListener("play",  () => setPlayIcon(true));
-  audio.addEventListener("pause", () => setPlayIcon(false));
-  audio.addEventListener("ended", () => setPlayIcon(false));
-
-  audio.addEventListener("timeupdate", () => {
-    if (audio.duration) {
-      fill.style.width = (audio.currentTime / audio.duration) * 100 + "%";
-    }
-    timeEl.textContent = fmt(audio.currentTime) + " / " + fmt(audio.duration);
-  });
-
-  audio.addEventListener("loadedmetadata", () => {
-    timeEl.textContent = "0:00 / " + fmt(audio.duration);
-    hint.textContent = "Samurai — Djavan · trilha de fundo";
-  });
-
-  audio.addEventListener("error", () => {
-    hint.innerHTML = 'não encontrei o arquivo <b>samurai.mp3</b> nesta pasta';
-  });
-
-  bar.addEventListener("click", (e) => {
-    if (!audio.duration) return;
-    const rect = bar.getBoundingClientRect();
-    audio.currentTime = ((e.clientX - rect.left) / rect.width) * audio.duration;
-  });
-
-  muteBtn.addEventListener("click", () => {
-    audio.muted = !audio.muted;
-    muteBtn.textContent = audio.muted ? "🔇" : "🔊";
-  });
-
-  function showUnmute() { unmute.classList.add("show"); }
-  unmute.addEventListener("click", () => {
-    unmute.classList.remove("show");
-    audio.volume = 1;
-    audio.play().then(() => setPlayIcon(true)).catch(() => {});
-  });
-
-  // tenta tocar sozinho; se o navegador bloquear, mostra o aviso de toque
-  window.addEventListener("load", () => {
-    audio.volume = 0.75;
-    const p = audio.play();
-    if (p && p.catch) p.catch(showUnmute);
-  });
-
-  // autoplay liberado por navegador só após interação — reforço em qualquer clique
-  ["click", "keydown", "touchstart"].forEach(ev =>
-    window.addEventListener(ev, function once() {
-      if (audio.paused) audio.play().catch(() => {});
-      window.removeEventListener(ev, once);
-    }, { once: true })
-  );
 </script>
 </body>
 </html>
